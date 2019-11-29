@@ -1,6 +1,12 @@
-import time, random, sys, os
+import time, random, sys, os, platform
 
-os.system('clear')
+def LimpaTela():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
+LimpaTela()
 print("Saia do labirinto!!!")
 nomeInput = input("Qual o nome do seu personagem? ")
 
@@ -19,6 +25,7 @@ def GameWin():
     print("Você conseguiu sair do labirinto!!! \o/")
     sys.exit()
 
+
 class Personagem:
     def __init__(self):
         self.nome = ""
@@ -28,7 +35,7 @@ class Personagem:
 
 # Colocar random para dano
     def CalculaDano(self,inimigo):
-        os.system('clear')
+        LimpaTela()
         print("Você encontrou um inimigo!")
         print("O %s parece perigoso! Atributos: \n HP: %d \n Ataque: %d \n Defesa: %d " % (inimigo.nome, inimigo.hp, inimigo.ataque, inimigo.defesa))
         time.sleep(2)
@@ -55,7 +62,7 @@ class Personagem:
             if inimigo.hp == 0:
                 print("%s matou %s!" %(self.nome,inimigo.nome))
                 time.sleep(0.75)
-                os.system('clear')
+                LimpaTela()
                 Mapa()
 
 class Inimigo(Personagem):
@@ -88,18 +95,18 @@ def Mapa():
 
     if (Mcaminho.lower() == "a"):
         Mcaminho = 0
-        os.system('clear')
+        LimpaTela()
         print(jogador.nome,"está caminhando para o lado esquerdo...")
         time.sleep(0.75)
-        os.system('clear')
+        LimpaTela()
     elif (Mcaminho.lower() == "d"):
         Mcaminho = 1
-        os.system('clear')
+        LimpaTela()
         print(jogador.nome,"está caminhando para o lado direito...")
         time.sleep(0.75)
-        os.system('clear')
+        LimpaTela()
     elif (Mcaminho.lower() == "q"):
-        os.system('clear')
+        LimpaTela()
         print("Nome:", jogador.nome)
         print("HP:", jogador.hp)
         print("Ataque:", jogador.ataque)
@@ -108,32 +115,32 @@ def Mapa():
         Mapa()
     elif(Mcaminho.lower() == "v"):
         if (mochila["Pocoes de Vida"] > 0):
-            os.system('clear')
+            LimpaTela()
             print(jogador.nome,"está tomando uma poção...")
             time.sleep(0.75)
-            os.system('clear')
+            LimpaTela()
             jogador.hp += 15
             mochila["Pocoes de Vida"] -= 1
         else:
-            os.system('clear')
+            LimpaTela()
             print(jogador.nome, "não possui mais poções!")
             time.sleep(0.75)
-            os.system('clear')
+            LimpaTela()
         Mapa()
     elif(Mcaminho.lower() == "f"):
         if (mochila["Pocoes de Forca"] > 0):
-            os.system('clear')
+            LimpaTela()
             print(jogador.nome,"está tomando uma poção de força...")
             time.sleep(0.75)
-            os.system('clear')
+            LimpaTela()
             jogador.ataque += 10
             mochila["Pocoes de Forca"] -= 1
 
         else:
-            os.system('clear')
+            LimpaTela()
             print(jogador.nome, "não possui poções de força!")
             time.sleep(0.75)
-            os.system('clear')
+            LimpaTela()
         Mapa()
 
     elif (Mcaminho.lower() == "sair"):
@@ -141,10 +148,10 @@ def Mapa():
         sys.exit()
 
     else:
-        os.system('clear')
+        LimpaTela()
         print("Comando inválido.")
         time.sleep(0.4)
-        os.system('clear')
+        LimpaTela()
         Mapa()
 
     if (Mcaminho == MovimentoBool):
