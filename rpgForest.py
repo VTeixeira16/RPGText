@@ -60,7 +60,10 @@ class Personagem:
                 print("%s foi morto por %s!" %(self.nome,inimigo.nome))
                 GameOver()
             if inimigo.hp == 0:
-                print("%s matou %s!" %(self.nome,inimigo.nome))
+                jogador.hp += 30
+                jogador.ataque +=3
+                jogador.defesa +=3
+                print("%s matou %s e se sente mais forte! O hp aumentou para %d!" %(self.nome,inimigo.nome, self.hp))
                 time.sleep(0.75)
                 LimpaTela()
                 Mapa()
